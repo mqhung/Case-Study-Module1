@@ -1,0 +1,44 @@
+html {
+    background-image:url("https://i.pinimg.com/originals/93/d6/de/93d6deabff72e13966f9ede0edc50e17.jpg");
+    background-size: auto;
+}
+.button1{
+    margin-top: 250px;
+    margin-left: 200px;
+    color: darkblue;
+    background: darkorange;
+    height: 50px;
+}
+.button2{
+    margin-top: 250px;
+    margin-left: 1200px;
+    color: darkblue;
+    background: darkorange;
+    height: 50px;
+}
+.moneybet{
+    margin-left: 900px;
+    height: 100%;
+    color: red;
+}
+.container{
+    position: absolute;
+    bottom: 300px;
+    left:38px;
+    display: flex;
+    width: 96%;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+    border: none;
+}
+.player{
+    display: flex;
+    width: 8%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+    border: 1px solid red;
+}
