@@ -77,6 +77,8 @@ html {
     height: 50px;
 }
 .bet{
+    font-size:45px;
+    text-align: center;
     position: fixed;
     margin-top: 300px;
     margin-left: 700px;

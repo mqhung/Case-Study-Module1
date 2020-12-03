@@ -46,5 +46,6 @@ cardPlayer = [cardBot[9],cardBot[10],cardBot[11]];
 
 let player = new Player("Hung", 2000, cardPlayer)
 let bot1 = new Bot('David Beckham', 2000, cardBot1);
-let bot2 = new Bot('Messi', 2000, cardBot2);
+let bot2 = new Bot('BradPitt', 2000, cardBot2);
 let bot3 = new Bot('Ronaldo', 2000, cardBot3);
+document.getElementById('').innerHTML = cardBot[0];
