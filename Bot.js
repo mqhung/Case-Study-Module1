@@ -5,6 +5,7 @@ class Bot {
         this._card = card;
         this._status = true;
     }
+    //tinh diem
     checkCard(card){
         let sum = 0;
         for (let i=0;i<card.length; i++){
@@ -12,6 +13,7 @@ class Bot {
         }
         return sum;
     }
+    //dat cuoc tien
     betMoney(value){
         if (this.checkCard() >=7) {
             this._money -= value;
@@ -19,12 +21,14 @@ class Bot {
            this.foulCard()
         }
     }
+    //bo bai
     foulCard(){ //up bai
         if (this.checkCard(this._card) <= 4){
             this._card = [];
         }
     }
-    getOutGame(){ //het tien roi game
+    //het tien roi game
+    getOutGame(){
         if (this._money <= 0){
             this._status = false;
         }

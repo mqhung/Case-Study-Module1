@@ -9,54 +9,105 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!--start, end Game-->
 <div>
     <input class="button1" type="button" onclick="startGame();" value="Start Game">
     <input class="button2" type="button" onclick="endGame();" value="End Game">
 </div>
+<!--nguoi choi va bot-->
 <div>
     <div class="player">
         <table>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="card1"></td>
+                <td id="card2"></td>
+                <td id="card3"></td>
             </tr>
         </table>
-        <img src="player.jpg" class="anhplayer">
+        <img src="player.jpg" class="anhPlayer">
+        <div>
+            <span id="moneyPlayer">0</span>
+        </div>
+        <br>
+        <div>
+            <input type="button" onclick="playerBet();" value="BET" style="width: 50px;height: 30px;
+             margin-left: 50px;/*background: ;color:;*/">
+            <input type="text" id="moneyPlayerBet" style="width: 150px;height: 27px;/*background:*/"
+                   placeholder="Input your money bet">
+        </div>
+        <br>
+        <div>
+            <input type="button" onclick="agreeBet();" value="CALL" style="width: 50px;height: 30px;
+            margin-left: 50px;/*background: lightpink*/">
+            <input type="button" onclick="foul();" value="FOUL" style="width: 50px;height: 30px;
+            margin-left: 108px;/*background: lightpink*/">
+        </div>
     </div>
     <div class="bot1">
         <table>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="card4"></td>
+                <td id="card5"></td>
+                <td id="card6"></td>
             </tr>
         </table>
-        <img src="BradPitt.jpg" class="anhbot1">
+        <img src="BradPitt.jpg" class="anhBot1">
+        <div>
+            <span id="moneyBot1">0</span>
+        </div>
     </div>
 </div>
 <div>
     <div class="bot2">
         <table>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="card7"></td>
+                <td id="card8"></td>
+                <td id="card9"></td>
             </tr>
         </table>
-        <img src="DavidBeckham.jpg" class="anhbot2">
+        <img src="DavidBeckham.jpg" class="anhBot2">
+        <div>
+            <span id="moneyBot2">0</span>
+        </div>
     </div>
     <div class="bot3">
         <table>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="card10"></td>
+                <td id="card11"></td>
+                <td id="card12"></td>
             </tr>
         </table>
-        <img src="Ronaldo.jpg" class="anhbot3">
+        <img src="Ronaldo.jpg" class="anhBot3">
+        <div>
+            <span id="moneyBot3">0</span>
+        </div>
     </div>
 </div>
-<div class="bet"><span id="money">0</span> </div>
+<div class="bet"><span id="moneyBet">0</span></div>
+
+<script>
+    //hien thi la bai player
+    document.getElementById('card1').innerHTML = cardBot[9][0];
+    document.getElementById('card2').innerHTML = cardBot[10][1];
+    document.getElementById('card3').innerHTML = cardBot[11][2];
+    //hien thi bai cua bot
+    //bot1
+    document.getElementById('card4').innerHTML = cardBot[0][3];
+    document.getElementById('card5').innerHTML = cardBot[1][0];
+    document.getElementById('card6').innerHTML = cardBot[2][1];
+    //bot2
+    document.getElementById('card7').innerHTML = cardBot[3][2];
+    document.getElementById('card8').innerHTML = cardBot[4][3];
+    document.getElementById('card9').innerHTML = cardBot[5][0];
+    //bot3
+    document.getElementById('card10').innerHTML = cardBot[6][1];
+    document.getElementById('card11').innerHTML = cardBot[7][2];
+    document.getElementById('card12').innerHTML = cardBot[8][3];
+    //cac function
+
+
+</script>
 </body>
 </html>
