@@ -1,5 +1,5 @@
 // bo bai goc
-let card = [
+let cardImg = [
     ['<img src="bobai/atbich.png"/>', '<img src="bobai/attep.png"/>', '<img src="bobai/atco.png"/>', '<img src="bobai/atro.png"/>'],
     ['<img src="bobai/2bich.png"/>', '<img src="bobai/2tep.png"/>', '<img src="bobai/2co.png"/>', '<img src="bobai/2ro.png"/>'],
     ['<img src="bobai/3bich.png"/>', '<img src="bobai/3tep.png"/>', '<img src="bobai/3co.png"/>', '<img src="bobai/3ro.png"/>'],
@@ -14,47 +14,107 @@ let card = [
     ['<img src="bobai/qbich.png"/>', '<img src="bobai/qtep.png"/>', '<img src="bobai/qco.png"/>', '<img src="bobai/qro.png"/>'],
     ['<img src="bobai/kbich.png"/>', '<img src="bobai/ktep.png"/>', '<img src="bobai/kco.png"/>', '<img src="bobai/kro.png"/>']
 ];
-
-//bo bai cua bot va player
-let cardBot = card;
-let cardPlayer = [[]];
-let cardBot1 = [[]];
-let cardBot2 = [[]];
-let cardBot3 = [[]];
-
-for (let i = 0; i < cardBot.length; i++) {
-    let index = Math.floor(Math.random() * cardBot.length);
-    for (let j = 0; j < cardBot[i].length; j++) {
-        let index2 = Math.floor(Math.random() * cardBot[i].length);
-        let temp = cardBot[i][j];
-        cardBot[i][j] = cardBot[index][index2];
-        cardBot[index][index2] = temp;
-    }
-
-}
-cardPlayer = [[cardBot[9][1], cardBot[10][0], cardBot[11][3]]];
-cardBot1 = [[cardBot[0][0], cardBot[1][1], cardBot[2][2]]];
-cardBot2 = [[cardBot[3][1], cardBot[4][2], cardBot[5][3]]];
-cardBot3 = [[cardBot[6][3], cardBot[7][3], cardBot[8][2]]];
-
-
-//tao doi tuong
-let player = new Player("Hung", 2000, cardPlayer)
-let bot1 = new Bot('BradPitt', 2000, cardBot1);
-let bot2 = new Bot('David Beckham', 2000, cardBot2);
-let bot3 = new Bot('Ronaldo', 2000, cardBot3);
-
-//gan gia tri cho la bai
-function imgToValue() {
-    let value = 1;
-    cardBot[0][0] = value;
-    for (let i = 0; i < cardBot.length; i++) {
-        for (let j = 0; j < cardBot[i].length; j++) {
-            cardBot[i][j] +=0.2;
-        }
-        value +=1;
+//tao bo bai hoan chinh
+let deck = [];
+let index = 1;
+for ( let i = 0; i<cardImg; i++){
+    for (let j = 0; j<cardImg[i].length;j++){
+        let point = index;
+        point = index + (0.01+i)*j;
+        let card = new Card();
+        card.img = cardImg[i][j];
+        card.point = point;
+        deck.push(card);
     }
 }
+console.log(deck);
+
+// let card = [];
+// for (let i = 0;i<3;i++){
+//     let row = Math.random();
+//     let column = Math.random();
+// //tao doi tuong la bai
+//     let cardPlayer = new Card(deck[row][column], cardPoint[row][column]);
+// }
+
+// //tao doi tuong
+// let player = new Player("Hung", 2000, cardPointPlayer);
+// let brad = new Bot('BradPitt', 2000, cardPointBrad);
+// let david = new Bot('David Beckham', 2000, cardPointDavid);
+// let ronaldo = new Bot('Ronaldo', 2000, cardPointRonaldo);
+// //start game
+// function displayGame() {
+//     function startGame() {
+//
+//     }
+// }
+// //bet money
+//     function botBetMoney() {
+//         //Brad bet
+//         if (pointBrad <= 10 && pointBrad > 0) {
+//             brad.foulCard();
+//         } else if (pointBrad <= 20) {
+//             brad.betMoney(200);
+//             totalbet += 200;
+//         } else if (pointBrad <= 30) {
+//             brad.betMoney(300);
+//             totalbet += 300;
+//         } else if (pointBrad < 40) {
+//             brad.betMoney(400);
+//             totalbet += 400;
+//         }
+//         //David bet
+//         if (pointDavid <= 5 && pointDavid > 0) {
+//             david.foulCard();
+//         } else if (pointDavid <= 15) {
+//             david.betMoney(200);
+//             totalbet += 200;
+//         } else if (pointDavid <= 25) {
+//             david.betMoney(300);
+//             totalbet += 300;
+//         } else if (pointDavid < 35) {
+//             david.betMoney(400);
+//             totalbet += 400;
+//         }
+//         //Ronaldo bet
+//         if (pointRonaldo <= 8 && pointRonaldo > 0) {
+//             ronaldo.foulCard();
+//         } else if (pointRonaldo <= 18) {
+//             ronaldo.betMoney(200);
+//             totalbet += 200;
+//         } else if (pointRonaldo <= 28) {
+//             ronaldo.betMoney(300);
+//             totalbet += 300;
+//         } else if (pointRonaldo < 38) {
+//             ronaldo.betMoney(400);
+//             totalbet += 400;
+//         }
+//     }
+//
+// //check point
+//     function checkPoint(arr) {
+//         let max = arr[0].score;
+//         for (let i = 0; i < arr.length; i++) {
+//             if (max < arr[i].score) {
+//                 max = arr[i].score;
+//             }
+//         }
+//         return max;
+//     }
+//
+// //check win
+//     function checkWin() {
+//         checkPoint(point);
+//     }
+//
+// //next game
+//     function nextGame() {
+//     }
+//
+// //end game
+
+
+
 
 
 

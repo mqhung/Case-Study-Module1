@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>God of Gamblers</title>
+    <script src="card.js"></script>
     <script src="Bot.js"></script>
     <script src="player.js"></script>
     <script src="Game-Manager.js"></script>
@@ -26,7 +27,7 @@
         </table>
         <img src="player.jpg" class="anhPlayer">
         <div>
-            <span id="moneyPlayer">0</span>
+            <span id="moneyPlayer"></span>
         </div>
         <br>
         <div>
@@ -43,7 +44,7 @@
             margin-left: 108px;/*background: lightpink*/">
         </div>
     </div>
-    <div class="bot1">
+    <div class="brad">
         <table>
             <tr>
                 <td id="card4"></td>
@@ -51,14 +52,14 @@
                 <td id="card6"></td>
             </tr>
         </table>
-        <img src="BradPitt.jpg" class="anhBot1">
+        <img src="BradPitt.jpg" class="anhBrad">
         <div>
-            <span id="moneyBot1">0</span>
+            <span id="moneyBrad"></span>
         </div>
     </div>
 </div>
 <div>
-    <div class="bot2">
+    <div class="david">
         <table>
             <tr>
                 <td id="card7"></td>
@@ -66,12 +67,12 @@
                 <td id="card9"></td>
             </tr>
         </table>
-        <img src="DavidBeckham.jpg" class="anhBot2">
+        <img src="DavidBeckham.jpg" class="anhDavid">
         <div>
-            <span id="moneyBot2">0</span>
+            <span id="moneyDavid"></span>
         </div>
     </div>
-    <div class="bot3">
+    <div class="ronaldo">
         <table>
             <tr>
                 <td id="card10"></td>
@@ -79,35 +80,13 @@
                 <td id="card12"></td>
             </tr>
         </table>
-        <img src="Ronaldo.jpg" class="anhBot3">
+        <img src="Ronaldo.jpg" class="anhRonaldo">
         <div>
-            <span id="moneyBot3">0</span>
+            <span id="moneyRonaldo"></span>
         </div>
     </div>
 </div>
-<div class="bet"><span id="moneyBet">0</span></div>
-
-<script>
-    //hien thi la bai player
-    document.getElementById('card1').innerHTML = cardBot[9][0];
-    document.getElementById('card2').innerHTML = cardBot[10][1];
-    document.getElementById('card3').innerHTML = cardBot[11][2];
-    //hien thi bai cua bot
-    //bot1
-    document.getElementById('card4').innerHTML = cardBot[0][3];
-    document.getElementById('card5').innerHTML = cardBot[1][0];
-    document.getElementById('card6').innerHTML = cardBot[2][1];
-    //bot2
-    document.getElementById('card7').innerHTML = cardBot[3][2];
-    document.getElementById('card8').innerHTML = cardBot[4][3];
-    document.getElementById('card9').innerHTML = cardBot[5][0];
-    //bot3
-    document.getElementById('card10').innerHTML = cardBot[6][1];
-    document.getElementById('card11').innerHTML = cardBot[7][2];
-    document.getElementById('card12').innerHTML = cardBot[8][3];
-    //cac function
-
-
-</script>
+<div class="bet"><span id="moneyBet"></span></div>
+<div class="result"><span id="result"></span></div>
 </body>
 </html>
