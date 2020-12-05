@@ -5,15 +5,32 @@ class Bot {
         this._card = card;
         this._status = true;
     }
-    //tinh diem
-    checkCardBot(card){
-        let sum = 0;
-        for (let i=0;i<card.length; i++){
-                sum += card[i];
-        }
-        return sum;
+
+    get name() {
+        return this._name;
     }
-    //dat cuoc tien
+
+    set name(value) {
+        this._name = value;
+    }
+
+    get money() {
+        return this._money;
+    }
+
+    set money(value) {
+        this._money = value;
+    }
+
+    get card() {
+        return this._card;
+    }
+
+    set card(value) {
+        this._card = value;
+    }
+
+//dat cuoc tien
     betMoney(value){
             this._money -= value;
     }

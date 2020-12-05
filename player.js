@@ -4,12 +4,29 @@ class Player {
         this._money = money;
         this._card = card;
     }
-    //tinh diem
-    checkCardPlayer(card){
-        let sum = 0;
-        for (let i=0;i<card.length; i++){
-            sum += card[i];
-        }
-        return sum;
+
+    get name() {
+        return this._name;
+    }
+
+    set name(value) {
+        this._name = value;
+    }
+
+    get money() {
+        return this._money;
+    }
+
+    set money(value) {
+        this._money = value;
+    }
+
+    get card() {
+        return this._card;
+    }
+
+    set card(value) {
+        this._card = value;
     }
 }
+

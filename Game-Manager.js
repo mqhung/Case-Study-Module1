@@ -17,38 +17,75 @@ let cardImg = [
 //tao bo bai hoan chinh
 let deck = [];
 let index = 1;
-for ( let i = 0; i<cardImg; i++){
-    for (let j = 0; j<cardImg[i].length;j++){
-        let point = index;
-        point = index + (0.01+i)*j;
+for (let i = 0; i < cardImg.length; i++) {
+    let point = index;
+    for (let j = 0; j < cardImg[i].length; j++) {
+        point += 0.2;
         let card = new Card();
         card.img = cardImg[i][j];
         card.point = point;
         deck.push(card);
     }
+    index++;
 }
-console.log(deck);
 
-// let card = [];
-// for (let i = 0;i<3;i++){
-//     let row = Math.random();
-//     let column = Math.random();
-// //tao doi tuong la bai
-//     let cardPlayer = new Card(deck[row][column], cardPoint[row][column]);
-// }
+//tron bai
+function randomCard(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let j = Math.floor(Math.random() * arr.length);
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
+//la bai cua 4 nguoi choi
+let cardPlayer = [deck[0],deck[1],deck[2]];
+let cardBrad = [deck[3],deck[4],deck[5]];
+let cardDavid = [deck[6],deck[7],deck[8]];
+let cardRonaldo = [deck[9],deck[10],deck[11]];
 
-// //tao doi tuong
-// let player = new Player("Hung", 2000, cardPointPlayer);
-// let brad = new Bot('BradPitt', 2000, cardPointBrad);
-// let david = new Bot('David Beckham', 2000, cardPointDavid);
-// let ronaldo = new Bot('Ronaldo', 2000, cardPointRonaldo);
-// //start game
-// function displayGame() {
-//     function startGame() {
-//
+//tao doi tuong
+let player = new Bot('Hung', 2000, cardPlayer);
+let brad = new Bot('BradPitt', 2000, cardBrad);
+let david = new Bot('David Beckham', 2000, cardDavid);
+let ronaldo = new Bot('Ronaldo', 2000, cardRonaldo);
+// start game
+function startGame() {
+    randomCard();
+    //bai player
+    document.getElementById('card1').innerHTML = cardPlayer[0].img;
+    document.getElementById('card2').innerHTML = cardPlayer[1].img;
+    document.getElementById('card3').innerHTML = cardPlayer[2].img;
+    //bai Brad
+    document.getElementById('card4').innerHTML = cardBrad[3].img;
+    document.getElementById('card5').innerHTML = cardBrad[4].img;
+    document.getElementById('card6').innerHTML = cardBrad[5].img;
+    //bai David
+    document.getElementById('card7').innerHTML = cardDavid[6].img;
+    document.getElementById('card8').innerHTML = cardDavid[7].img;
+    document.getElementById('card9').innerHTML = cardDavid[8].img;
+    //bai Ronaldo
+    document.getElementById('card10').innerHTML = cardRonaldo[9].img;
+    document.getElementById('card11').innerHTML = cardRonaldo[10].img;
+    document.getElementById('card12').innerHTML = cardRonaldo[11].img;
+    //tien cua 4 nguoi choi
+    document.getElementById('moneyPlayer').innerHTML = player.money;
+    document.getElementById('moneyBrad').innerHTML = brad.money;
+    document.getElementById('moneyDavid').innerHTML = david.money;
+    document.getElementById('moneyRonaldo').innerHTML = ronaldo.money;
+}
+
+//check point
+//     function checkPoint(arr) {
+//         let max = arr[0].score;
+//         for (let i = 0; i < arr.length; i++) {
+//             if (max < arr[i].score) {
+//                 max = arr[i].score;
+//             }
+//         }
+//         return max;
 //     }
-// }
-// //bet money
+// bet money
 //     function botBetMoney() {
 //         //Brad bet
 //         if (pointBrad <= 10 && pointBrad > 0) {
@@ -91,18 +128,8 @@ console.log(deck);
 //         }
 //     }
 //
-// //check point
-//     function checkPoint(arr) {
-//         let max = arr[0].score;
-//         for (let i = 0; i < arr.length; i++) {
-//             if (max < arr[i].score) {
-//                 max = arr[i].score;
-//             }
-//         }
-//         return max;
-//     }
-//
-// //check win
+
+//check win
 //     function checkWin() {
 //         checkPoint(point);
 //     }
