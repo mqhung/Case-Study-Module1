@@ -38,20 +38,38 @@ function randomCard(arr) {
         arr[j] = temp;
     }
 }
-//la bai cua 4 nguoi choi
-let cardPlayer = [deck[0],deck[1],deck[2]];
-let cardBrad = [deck[3],deck[4],deck[5]];
-let cardDavid = [deck[6],deck[7],deck[8]];
-let cardRonaldo = [deck[9],deck[10],deck[11]];
 
+//la bai cua 4 nguoi choi
+let cardPlayer = [];
+let cardBrad = [];
+let cardDavid = [];
+let cardRonaldo = [];
+
+for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 3; i++) {
+        let index = Math.floor(Math.random() * 52);
+        cardPlayer.push(deck[index]);
+        deck.splice(index, 1);
+        index = Math.floor(Math.random() * 52);
+        cardBrad.push(deck[index]);
+        deck.splice(index, 1);
+        index = Math.floor(Math.random() * 52);
+        cardDavid.push(deck[index]);
+        deck.splice(index, 1);
+        index = Math.floor(Math.random() * 52);
+        cardRonaldo.push(deck[index]);
+        deck.splice(index, 1);
+    }
+}
 //tao doi tuong
 let player = new Bot('Hung', 2000, cardPlayer);
 let brad = new Bot('BradPitt', 2000, cardBrad);
 let david = new Bot('David Beckham', 2000, cardDavid);
 let ronaldo = new Bot('Ronaldo', 2000, cardRonaldo);
+
 // start game
 function startGame() {
-    randomCard();
+    randomCard(deck);
     //bai player
     document.getElementById('card1').innerHTML = cardPlayer[0].img;
     document.getElementById('card2').innerHTML = cardPlayer[1].img;
@@ -76,64 +94,62 @@ function startGame() {
 }
 
 //check point
-//     function checkPoint(arr) {
-//         let max = arr[0].score;
-//         for (let i = 0; i < arr.length; i++) {
-//             if (max < arr[i].score) {
-//                 max = arr[i].score;
-//             }
-//         }
-//         return max;
-//     }
-// bet money
-//     function botBetMoney() {
-//         //Brad bet
-//         if (pointBrad <= 10 && pointBrad > 0) {
-//             brad.foulCard();
-//         } else if (pointBrad <= 20) {
-//             brad.betMoney(200);
-//             totalbet += 200;
-//         } else if (pointBrad <= 30) {
-//             brad.betMoney(300);
-//             totalbet += 300;
-//         } else if (pointBrad < 40) {
-//             brad.betMoney(400);
-//             totalbet += 400;
-//         }
-//         //David bet
-//         if (pointDavid <= 5 && pointDavid > 0) {
-//             david.foulCard();
-//         } else if (pointDavid <= 15) {
-//             david.betMoney(200);
-//             totalbet += 200;
-//         } else if (pointDavid <= 25) {
-//             david.betMoney(300);
-//             totalbet += 300;
-//         } else if (pointDavid < 35) {
-//             david.betMoney(400);
-//             totalbet += 400;
-//         }
-//         //Ronaldo bet
-//         if (pointRonaldo <= 8 && pointRonaldo > 0) {
-//             ronaldo.foulCard();
-//         } else if (pointRonaldo <= 18) {
-//             ronaldo.betMoney(200);
-//             totalbet += 200;
-//         } else if (pointRonaldo <= 28) {
-//             ronaldo.betMoney(300);
-//             totalbet += 300;
-//         } else if (pointRonaldo < 38) {
-//             ronaldo.betMoney(400);
-//             totalbet += 400;
-//         }
-//     }
-//
+function checkPoint(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i].point;
+    }
+    return sum;
+}
 
-//check win
-//     function checkWin() {
-//         checkPoint(point);
-//     }
-//
+//bet money
+let totalBet = document.getElementById('moneyBet').value;
+
+function botBetMoney() {
+    let pointBrad = checkPoint(cardBrad);
+    //Brad bet
+    if (pointBrad <= 10 && pointBrad > 0) {
+        brad.foulCard();
+    } else if (pointBrad <= 20) {
+        brad.betMoney(200);
+        totalBet += 200;
+    } else if (pointBrad <= 30) {
+        brad.betMoney(300);
+        totalBet += 300;
+    } else if (pointBrad < 40) {
+        brad.betMoney(400);
+        totalBet += 400;
+    }
+    //David bet
+    let pointDavid = checkPoint(cardDavid);
+    if (pointDavid <= 5 && pointDavid > 0) {
+        david.foulCard();
+    } else if (pointDavid <= 15) {
+        david.betMoney(200);
+        totalBet += 200;
+    } else if (pointDavid <= 25) {
+        david.betMoney(300);
+        totalBet += 300;
+    } else if (pointDavid < 35) {
+        david.betMoney(400);
+        totalBet += 400;
+    }
+    //Ronaldo bet
+    let pointRonaldo = checkPoint(cardRonaldo);
+    if (pointRonaldo <= 8 && pointRonaldo > 0) {
+        ronaldo.foulCard();
+    } else if (pointRonaldo <= 18) {
+        ronaldo.betMoney(200);
+        totalBet += 200;
+    } else if (pointRonaldo <= 28) {
+        ronaldo.betMoney(300);
+        totalBet += 300;
+    } else if (pointRonaldo < 38) {
+        ronaldo.betMoney(400);
+        totalBet += 400;
+    }
+}
+
 // //next game
 //     function nextGame() {
 //     }
