@@ -46,7 +46,7 @@ let cardDavid = [];
 let cardRonaldo = [];
 
 for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 3; i++) {
+    for (let j = 0; j < 3; j++) {
         let index = Math.floor(Math.random() * 52);
         cardPlayer.push(deck[index]);
         deck.splice(index, 1);
