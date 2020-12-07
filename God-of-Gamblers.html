@@ -12,7 +12,7 @@
 <!--start, end Game-->
 <div>
     <input class="button1" type="button" onclick="startGame();" value="Start Game">
-    <input class="button2" type="button" onclick="nextGame();" value="Next">
+    <input class="button2" type="button" onclick="checkWin();" value="Check Win">
     <input class="button3" type="button" onclick="endGame();" value="End Game">
 </div>
 <!--nguoi choi va bot-->
@@ -30,6 +30,9 @@
             <span id="moneyPlayer"></span>
         </div>
         <br>
+        <div>
+            <input type="button" onclick="playerBet();" value="Player Bet">
+        </div>
     </div>
     <div class="brad">
         <table>
@@ -43,6 +46,11 @@
         <div>
             <span id="moneyBrad"></span>
         </div>
+        <br>
+        <div>
+            <input type="button" onclick="bradBet();" value="Brad Bet">
+        </div>
+
     </div>
 </div>
 <div>
@@ -58,6 +66,10 @@
         <div>
             <span id="moneyDavid"></span>
         </div>
+        <br>
+        <div>
+            <input type="button" onclick="davidBet();" value="David Bet">
+        </div>
     </div>
     <div class="ronaldo">
         <table>
@@ -70,6 +82,10 @@
         <img src="Ronaldo.jpg" class="anhRonaldo">
         <div>
             <span id="moneyRonaldo"></span>
+        </div>
+        <br>
+        <div>
+            <input type="button" onclick="ronaldoBet();" value="Ronaldo Bet">
         </div>
     </div>
 </div>
