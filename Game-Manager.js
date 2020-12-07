@@ -20,6 +20,7 @@ let index = 1;
 for (let i = 0; i < cardImg.length; i++) {
     let point = index;
     for (let j = 0; j < cardImg[i].length; j++) {
+        point += 0.02;
         let card = new Card();
         card.img = cardImg[i][j];
         card.point = point;
@@ -100,35 +101,33 @@ function startGame() {
 
 //check win
 function checkWin() {
-    document.getElementById('moneyBrad').innerHTML = brad.money;
-    document.getElementById('moneyDavid').innerHTML = david.money;
-    document.getElementById('moneyRonaldo').innerHTML = ronaldo.money;
-    document.getElementById('moneyBet').innerHTML = totalBet;
-    // let isWinner = checkSum();
-    // if (isWinner == arrSum[0]){
-    //     document.getElementById('result').innerHTML = "You win"
-    //     player.money += totalBet;
-    //     document.getElementById('moneyPlayer').innerHTML = player.money;
-    //     totalBet = '';
-    // }
-    // if (isWinner == arrSum[1]){
-    //     document.getElementById('result').innerHTML = "Brad win"
-    //     brad.money += totalBet;
-    //     document.getElementById('moneyBrad').innerHTML = brad.money;
-    //     totalBet = '';
-    // }
-    // if (isWinner == arrSum[2]){
-    //     document.getElementById('result').innerHTML = "David win"
-    //     david.money += totalBet;
-    //     document.getElementById('moneyDavid').innerHTML = david.money;
-    //     totalBet = '';
-    // }
-    // if (isWinner == arrSum[3]){
-    //     document.getElementById('result').innerHTML = "Ronaldo win"
-    //     ronaldo.money += totalBet;
-    //     document.getElementById('moneyDavid').innerHTML = ronaldo.money;
-    //     totalBet = '';
-    // }
+    arrSum = [checkPoint(cardPlayer), checkPoint(cardBrad),
+        checkPoint(cardDavid), checkPoint(cardRonaldo)];
+    let isWinner = checkSum(arrSum);
+    if (isWinner == arrSum[0]){
+        document.getElementById('result').innerHTML = "You win"
+        player.money += totalBet;
+        document.getElementById('moneyPlayer').innerHTML = player.money;
+        totalBet = '';
+    }
+    if (isWinner == arrSum[1]){
+        document.getElementById('result').innerHTML = "Brad win"
+        brad.money += totalBet;
+        document.getElementById('moneyBrad').innerHTML = brad.money;
+        totalBet = '';
+    }
+    if (isWinner == arrSum[2]){
+        document.getElementById('result').innerHTML = "David win"
+        david.money += totalBet;
+        document.getElementById('moneyDavid').innerHTML = david.money;
+        totalBet = '';
+    }
+    if (isWinner == arrSum[3]){
+        document.getElementById('result').innerHTML = "Ronaldo win"
+        ronaldo.money += totalBet;
+        document.getElementById('moneyRonaldo').innerHTML = ronaldo.money;
+        totalBet = '';
+    }
 }
 
 //check point
@@ -174,17 +173,35 @@ function ronaldoBet() {
     document.getElementById('moneyRonaldo').innerHTML = ronaldo.money;
     document.getElementById('moneyBet').innerHTML = totalBet;
 }
+function playerBet(){
+    let bet = +prompt("Input yor money bet");
+    player.money -= bet;
+    totalBet += bet;
+    document.getElementById('moneyPlayer').innerHTML = player.money;
+    document.getElementById('moneyBet').innerHTML = totalBet;
+}
 
 //tinh tong diem bai
-function checkSum() {
-    let maxSum = arrSum[0];
-    for (let i = 0; i < arrSum.length; i++) {
-        if (maxSum < arrSum[i]) {
-            maxSum = arrSum[i];
+function checkSum(arr) {
+    let max = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+        if (max < arr[i]) {
+            max = arr[i];
         }
     }
-    return maxSum;
+    return max;
 }
+//player up bai
+function foul(){
+    cardPlayer = [];
+    document.getElementById('card1').innerHTML = '';
+    document.getElementById('card2').innerHTML = '';
+    document.getElementById('card3').innerHTML = '';
+}
+function nextGame(){
+        startGame();
+}
+
 
 
 
