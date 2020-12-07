@@ -20,7 +20,6 @@ let index = 1;
 for (let i = 0; i < cardImg.length; i++) {
     let point = index;
     for (let j = 0; j < cardImg[i].length; j++) {
-        point += 0.2;
         let card = new Card();
         card.img = cardImg[i][j];
         card.point = point;
@@ -60,11 +59,14 @@ let cardRonaldo = [];
         deck.splice(index, 1);
     }
 //tao doi tuong
-let player = new Bot('Hung', 20000, cardPlayer);
-let brad = new Bot('BradPitt', 20000, cardBrad);
-let david = new Bot('David Beckham', 20000, cardDavid);
-let ronaldo = new Bot('Ronaldo', 20000, cardRonaldo);
-
+let player = new Bot('Hung', 19900, cardPlayer);
+let brad = new Bot('BradPitt', 19900, cardBrad);
+let david = new Bot('David Beckham', 19900, cardDavid);
+let ronaldo = new Bot('Ronaldo', 19900, cardRonaldo);
+//tong tien cuoc
+let totalBet = document.getElementById('moneyBet');
+totalBet = 400;
+let arrSum = [];
 // start game
 function startGame() {
     randomCard(deck);
@@ -89,7 +91,45 @@ function startGame() {
     document.getElementById('moneyBrad').innerHTML = brad.money;
     document.getElementById('moneyDavid').innerHTML = david.money;
     document.getElementById('moneyRonaldo').innerHTML = ronaldo.money;
-
+    document.getElementById('moneyBet').innerHTML = totalBet;
+    //mang chua tong diem cua 4 nguoi
+    arrSum = [checkPoint(cardPlayer),checkPoint(cardBrad),
+        checkPoint(cardDavid),checkPoint(cardRonaldo)];
+}
+//next game
+function nextGame(){
+    botBetMoney(brad);
+    botBetMoney(david);
+    botBetMoney(ronaldo);
+    document.getElementById('moneyBrad').innerHTML = brad.money;
+    document.getElementById('moneyDavid').innerHTML = david.money;
+    document.getElementById('moneyRonaldo').innerHTML = ronaldo.money;
+    document.getElementById('moneyBet').innerHTML = totalBet;
+    let isWinner = checkWin();
+    if (isWinner == arrSum[0]){
+        document.getElementById('result').innerHTML = "You win"
+        player.money += totalBet;
+        document.getElementById('moneyPlayer').innerHTML = player.money;
+        totalBet = '';
+    }
+    if (isWinner == arrSum[1]){
+        document.getElementById('result').innerHTML = "Brad win"
+        brad.money += totalBet;
+        document.getElementById('moneyBrad').innerHTML = brad.money;
+        totalBet = '';
+    }
+    if (isWinner == arrSum[2]){
+        document.getElementById('result').innerHTML = "David win"
+        david.money += totalBet;
+        document.getElementById('moneyDavid').innerHTML = david.money;
+        totalBet = '';
+    }
+    if (isWinner == arrSum[3]){
+        document.getElementById('result').innerHTML = "Ronaldo win"
+        ronaldo.money += totalBet;
+        document.getElementById('moneyDavid').innerHTML = ronaldo.money;
+        totalBet = '';
+    }
 }
 
 //check point
@@ -100,9 +140,7 @@ function checkPoint(arr) {
     }
     return sum;
 }
-
 //bet money
-let totalBet = document.getElementById('moneyBet');
 function botBetMoney(bot) {
     let pointBot = checkPoint(bot.card);
     //Brad bet
@@ -110,21 +148,30 @@ function botBetMoney(bot) {
         bot.foulCard();
     } else if (pointBot <= 20) {
         bot.betMoney(200);
-        totalBet.innerHTML = `200`;/*------------------------------------*/
-        bot.money.innerHTML -= totalBet;
+        totalBet += 200;
+        bot.money -= 200;
     } else if (pointBot <= 30) {
         bot.betMoney(300);
-        totalBet.innerHTML = `300`;
-    } else if (pointBot < 40) {
+        totalBet += 300;
+        bot.money -= 300;
+    } else {
         bot.betMoney(400);
-        totalBet.innerHTML = `400`;
+        totalBet += 400;
+        bot.money -= 400;
     }
+    return bot.money
 }
-// //next game
-//     function nextGame() {
-//     }
-//
-// //end game
+
+//player call game
+function checkWin(){
+    let maxSum = arrSum[0];
+    for (let i =0;i<arrSum.length;i++){
+        if (maxSum < arrSum[i]){
+            maxSum = arrSum[i];
+        }
+    }
+    return maxSum;
+}
 
 
 
